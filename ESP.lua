@@ -14,7 +14,7 @@ local ESP = {
         
         Boxes = {
             Enabled = true,
-            Color = Color3.new(1, 0, 1),
+            Color = Color3.fromRGB(255, 255, 255),
             Thickness = 1,
         },
         Names = {
@@ -23,7 +23,7 @@ local ESP = {
             Enabled = true,
             Resize = true, -- Resizes the text based on the distance from the camera to the player so text doesn't get ridiculously large the further you are from the target.
             ResizeWeight = 0.05, -- How quickly names are resized based on the distance from the camera.
-            Color = Color3.new(1, 1, 1),
+            Color = Color3.fromRGB(255, 255, 255),
             Size = 18,
             Font = 1,
             Center = true,
@@ -32,7 +32,7 @@ local ESP = {
         Tracers = {
             Enabled = true,
             Thickness = 0,
-            Color = Color3.new(1, 0, 1),
+            Color = Color3.fromRGB(255, 255, 255),
         }
     },
     Objects = {} -- Table of ESP objects that you can read and do fun stuff with, however, editing settings changes the settings for every object at the same time so this is only needed if you want to set settings for individual targets.
@@ -471,7 +471,7 @@ function Object:Refresh()
     end
 end
 
-RunService.Stepped:Connect(function()
+RunService.RenderStepped:Connect(function()
     for i, Object in next, ESP.Objects do
         Object:Refresh()
     end
